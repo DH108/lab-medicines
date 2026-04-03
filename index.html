@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>药品申请系统 - 开封大学功能材料中心</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="logo.png" alt="开封大学" class="school-logo">
+        </div>
+        <div class="header">
+            <h1>药品申请系统</h1>
+            <p>开封大学功能材料中心</p>
+        </div>
+        
+        <!-- 访客信息 -->
+        <div class="section">
+            <div class="section-title">📋 访客信息</div>
+            <div class="form-group">
+                <label>姓名 <span class="required">*</span></label>
+                <input type="text" id="visitorName" placeholder="请输入您的姓名">
+            </div>
+            <div class="form-group">
+                <label>单位 <span class="required">*</span></label>
+                <select id="visitorUnit">
+                    <option value="">请选择单位</option>
+                    <option value="功能材料中心">功能材料中心</option>
+                    <option value="材料与化学工程学院">材料与化学工程学院</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>药品用途 <span class="required">*</span></label>
+                <select id="visitorPurpose">
+                    <option value="">请选择用途</option>
+                    <option value="科研">科研</option>
+                    <option value="教学">教学</option>
+                    <option value="比赛">比赛</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- 药品选择 -->
+        <div class="section">
+            <div class="section-title">🔍 选择药品</div>
+            <div class="search-box">
+                <input type="text" id="medicineSearch" placeholder="输入药品名称搜索..." autocomplete="off">
+                <div class="suggestions" id="suggestions"></div>
+            </div>
+            
+            <div class="cart-list" id="cartList">
+                <div class="cart-header">
+                    <span>药品名称</span>
+                    <span>预计用量</span>
+                    <span></span>
+                </div>
+                <div id="cartItems"></div>
+            </div>
+            
+            <div class="empty-cart" id="emptyCart">
+                <p>还未选择任何药品</p>
+                <p style="font-size: 0.85rem; margin-top: 5px;">在上方搜索栏添加药品</p>
+            </div>
+        </div>
+        
+        <!-- 确认按钮 -->
+        <button class="confirm-btn" id="confirmBtn" onclick="generateCode()">
+            确认并生成核销码
+        </button>
+    </div>
+    
+    <!-- 核销码弹窗 -->
+    <div class="modal" id="codeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>核销码已生成</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="code-display" id="codeDisplay"></div>
+            <button class="copy-btn" onclick="copyCode()">
+                📋 点击复制核销码
+            </button>
+            
+            <div class="summary-section">
+                <h3>申请药品清单</h3>
+                <div class="summary-list" id="summaryList"></div>
+            </div>
+            
+            <div class="contact-section">
+                <p>请将核销码发送给管理员领取药品</p>
+                <button class="contact-btn" onclick="showContact()">
+                    💬 联系管理员
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 联系方式弹窗 -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content contact-modal">
+            <h3>管理员联系方式</h3>
+            <div class="contact-info">
+                <p><strong>杜昊</strong></p>
+                <p>电话: 19513380638</p>
+                <p>微信: H_Du1008</p>
+            </div>
+            <button class="copy-btn" onclick="copyContact()">
+                📋 复制微信号
+            </button>
+            <button class="close-contact-btn" onclick="closeContactModal()">关闭</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
